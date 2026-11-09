@@ -32,7 +32,7 @@ async def metrics_middleware(request: Request, call_next):
 @app.get("/")
 def root():
     n = r.incr("visites")
-    return {"visites": n}
+    return {"visites": n, "version": 9}
 
 
 @app.get("/health")
@@ -42,7 +42,6 @@ def health():
     except redis.exceptions.ConnectionError:
         return Response(status_code=503, content="redis down")
     return {"status": "ok"}
-
 
 @app.get("/metrics")
 def metrics():
