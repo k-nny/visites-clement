@@ -1,6 +1,6 @@
 def test_root_increments(client):
-    assert client.get("/").json() == {"visites": 1}
-    assert client.get("/").json() == {"visites": 2}
+    assert client.get("/").json() == {"visites": 1, "version": 9}
+    assert client.get("/").json() == {"visites": 2, "version": 9}
 
 
 def test_health_ok(client):
